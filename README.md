@@ -3,6 +3,11 @@
 <div align="center">
 
 ![Sortie Banner](Sortie-screenshots/sortie_pxUkL8qQYI.png)
+![Sortie Banner](Sortie-screenshots/explorer_mHisRXPl6V.png)
+![Sortie Banner](Sortie-screenshots/explorer_VAtc5RLyha.png)
+![Sortie Banner](Sortie-screenshots/sortie_gdq9oNuifL.png)
+![Sortie Banner](Sortie-screenshots/sortie_P5T7uvrHiN.png)
+![Sortie Banner](Sortie-screenshots/sortie_WcK2I4ldte.png)
 
 **A native, lightning-fast Rust desktop grid launcher and workflow automator designed to organize your apps, websites, folders, scripts, and bundle them into 1-click Project Workspaces.**
 
