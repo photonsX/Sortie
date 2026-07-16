@@ -140,6 +140,12 @@ If you prefer building a standalone `Setup.exe` wizard:
 1. Open **`installer/SortieSetup.iss`** in [Inno Setup 6](https://jrsoftware.org/isinfo.php) (or run via command line `ISCC.exe installer/SortieSetup.iss`).
 2. Generates `Sortie-v0.1.0-Setup.exe` with integrated runtime checks, quiet dependency fetching, and uninstaller support.
 
+### 🧹 Universal Uninstaller (`Uninstall-Sortie.bat` & `.ps1`)
+To cleanly remove Sortie from any PC:
+1. Double-click **`installer/Uninstall-Sortie.bat`**.
+2. It safely closes Sortie if running, deletes `%LOCALAPPDATA%\Programs\Sortie\`, and removes all Desktop and Start Menu shortcuts.
+3. It asks whether you want to preserve or delete your saved tiles (`state.json`), so reinstalling later can bring right back your workspace!
+
 ---
 
 ## 🏗️ Project Architecture
@@ -147,9 +153,11 @@ If you prefer building a standalone `Setup.exe` wizard:
 ```text
 Sortie/
 ├── installer/                # Universal automated Windows setup scripts & Inno Setup wizard
-│   ├── Install-Sortie.bat    # 1-click bootstrap launcher
+│   ├── Install-Sortie.bat    # 1-click installation bootstrap launcher
 │   ├── Install-Sortie.ps1    # Automated VC++ runtime check, binary setup & shortcut creator
-│   └── SortieSetup.iss       # Inno Setup 6 wizard definition
+│   ├── SortieSetup.iss       # Inno Setup 6 wizard definition
+│   ├── Uninstall-Sortie.bat  # 1-click uninstaller bootstrap launcher
+│   └── Uninstall-Sortie.ps1  # Automated uninstaller & shortcut cleanup script
 ├── Sortie-screenshots/       # Visual showcase and UI snapshots
 ├── src/
 │   ├── app.rs                # Core eframe GUI lifecycle & top-level UI loops
