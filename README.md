@@ -123,10 +123,33 @@ To make Sortie your primary daily launcher:
 
 ---
 
+## 📦 Universal Setup Installer (`installer/`)
+
+Sortie includes automated zero-configuration installer packages that ensure clean setups across any Windows 10/11 system:
+
+### Option 1: Universal 1-Click Bootstrap Script (`Install-Sortie.bat` & `.ps1`)
+Perfect for distributing to team members or setting up a fresh workstation without needing third-party compiler tools:
+1. Double-click **`installer/Install-Sortie.bat`** (or run `Install-Sortie.ps1` from PowerShell).
+2. The script automatically verifies **Microsoft Visual C++ 2015-2022 Redistributable x64** on the target PC. If missing, it downloads and quietly installs `vc_redist.x64.exe`.
+3. Installs `sortie.exe` directly into `%LOCALAPPDATA%\Programs\Sortie\sortie.exe`.
+4. Automatically generates both **Desktop** and **Start Menu** shortcuts (`Sortie.lnk`).
+5. Launches Sortie cleanly. Because tile databases (`state.json`) are stored user-locally, **every new user starts with a 100% clean, empty grid application** ready to build their own tailored workflow!
+
+### Option 2: Professional Inno Setup Wizard (`SortieSetup.iss`)
+If you prefer building a standalone `Setup.exe` wizard:
+1. Open **`installer/SortieSetup.iss`** in [Inno Setup 6](https://jrsoftware.org/isinfo.php) (or run via command line `ISCC.exe installer/SortieSetup.iss`).
+2. Generates `Sortie-v0.1.0-Setup.exe` with integrated runtime checks, quiet dependency fetching, and uninstaller support.
+
+---
+
 ## 🏗️ Project Architecture
 
 ```text
 Sortie/
+├── installer/                # Universal automated Windows setup scripts & Inno Setup wizard
+│   ├── Install-Sortie.bat    # 1-click bootstrap launcher
+│   ├── Install-Sortie.ps1    # Automated VC++ runtime check, binary setup & shortcut creator
+│   └── SortieSetup.iss       # Inno Setup 6 wizard definition
 ├── Sortie-screenshots/       # Visual showcase and UI snapshots
 ├── src/
 │   ├── app.rs                # Core eframe GUI lifecycle & top-level UI loops

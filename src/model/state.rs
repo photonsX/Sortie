@@ -111,16 +111,8 @@ impl AppState {
         // Load-time validation: drop dangling member_ids in projects
         state.validate();
 
-        // On startup, seed 3-4 hardcoded dummy Items if the state file is empty,
-        // so there's something visible to look at
-        if state.items.is_empty() && state.projects.is_empty() {
-            info!("State is empty. Seeding dummy items for initial display...");
-            state.seed_dummy_data();
-            if let Err(e) = state.save() {
-                error!("Failed to save seeded dummy state: {}", e);
-            }
-        }
-
+        // On startup, we return the loaded state (or default clean empty state if no state.json exists).
+        // New users will start with an empty dashboard to create their own tiles.
         state
     }
 
